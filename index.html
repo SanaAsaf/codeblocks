@@ -1,22 +1,37 @@
 <html>
-<ul id="list">
-</ul>
+<div id="list"><img id ="image"></img></div>
+  
+<button id="button">Previous</button>
+ 
+<button id="button2">Next</button>
+
 <script>
-var text, item;
+var current, array;
 
 
-text = ['http://www.google.com', 'Google', 'http://www.yahoo.com', 'Yahoo', 'http://www.codeyourfuture.oi', 'CYF'];
-text.forEach((item) => {
-  let element_list = document.getElementById('list');
-  let new_li = document.createElement('li');
-  let new_a = document.createElement('a');
-  new_a.setAttribute("href", text.shift());
-  new_a.innerText = text.shift();
+array = ['https://image.shutterstock.com/image-photo/untouched-tropical-beach-sri-lanka-600w-109674992.jpg', 'https://image.shutterstock.com/image-photo/beach-tropical-sea-600w-664029658.jpg', 'https://image.shutterstock.com/image-photo/coconut-palm-trees-grow-on-600w-723806818.jpg'];
+let element_list = document.getElementById('list');
+let new_img = document.createElement('img');
+let element_image = document.getElementById('image');
+element_image.setAttribute("src", array[0]);
 
-  new_li.appendChild(new_a);
+element_list.appendChild(new_img);
 
-  element_list.appendChild(new_li);
+
+document.getElementById('button').addEventListener('click', (event) => {
+  current = array.pop();
+  let element_image2 = document.getElementById('image');
+  element_image2.setAttribute("src", current);
+  array.unshift(current);
+
 });
 
+document.getElementById('button2').addEventListener('click', (event) => {
+  current = array.shift();
+  let element_image3 = document.getElementById('image');
+  element_image3.setAttribute("src", current);
+  array.push(current);
+
+});
 </script>
 </html>
