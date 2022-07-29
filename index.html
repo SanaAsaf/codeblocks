@@ -1,15 +1,178 @@
+<!DOCTYPE html>
 <html>
-<div id="list"><img id ="image"></img></div>
-  
-<button id="button">Previous</button>
- 
-<button id="button2">Next</button>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}.header{
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 5rem;
+}
+
+.nav-link{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #475569;
+}
+
+.nav-link:hover{
+    color: #482ff7;
+}
+
+.nav-logo {
+    font-size: 2.1rem;
+    font-weight: 500;
+    color: #482ff7;
+}
+@media only screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+</style>
+<header class="header">
+  <nav class="navbar">
+      <a href="#" class="nav-logo">Sana's Fundamentals 1 project</a>
+      <ul class="nav-menu">
+          <li class="nav-item">
+              <a href="#" class="nav-link">Week 1</a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link">Week 2</a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link">Week 3</a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link">Graduation</a>
+          </li>
+      </ul>
+      <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </div>
+  </nav>
+</header>
+
+</head>
+<body>
+
+  <div id="list"><img id ="image"width="400" height="400" style="vertical-align:middle;margin:0px 200px"></img></div>
+  
+<button id="button" style="vertical-align:middle;margin:0px 200px">Previous</button>
+ 
+<button id="button2" style="vertical-align:middle;margin:0px -20px">Next</button>
+<br>
+<br>
+<p><label for="comment"style="vertical-align:middle;margin:0px 200px">Please leave your comments :</label></p>
+<textarea id="comment" name="comment" rows="4" cols="50"style="vertical-align:middle;margin:0px 200px"></textarea>
+<br>
+<input type="submit" value="Submit"style="vertical-align:middle;margin:0px 200px">
 <script>
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
 var current, array;
 
 
-array = ['https://image.shutterstock.com/image-photo/untouched-tropical-beach-sri-lanka-600w-109674992.jpg', 'https://image.shutterstock.com/image-photo/beach-tropical-sea-600w-664029658.jpg', 'https://image.shutterstock.com/image-photo/coconut-palm-trees-grow-on-600w-723806818.jpg'];
+array = ['https://images.pexels.com/photos/1209610/pexels-photo-1209610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/5860727/pexels-photo-5860727.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/9733790/pexels-photo-9733790.jpeg','https://images.pexels.com/photos/10178704/pexels-photo-10178704.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'];
 let element_list = document.getElementById('list');
 let new_img = document.createElement('img');
 let element_image = document.getElementById('image');
@@ -34,4 +197,5 @@ document.getElementById('button2').addEventListener('click', (event) => {
 
 });
 </script>
+</body>
 </html>
